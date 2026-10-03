@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>happy boyfriend's day, kriday ♡</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500&display=swap');
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 38%, rgba(56, 72, 135, .25), transparent 32%),
+      linear-gradient(145deg, #020615, #07132f 55%, #030817);
+    color: #f5f2ff;
+    font-family: "DM Sans", sans-serif;
+    cursor: crosshair;
+    position: relative;
+  }
+
+  /* tiny stars */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,.85) 1px, transparent 1.5px),
+      radial-gradient(circle, rgba(180,195,255,.6) 1px, transparent 1.5px);
+    background-size: 83px 83px, 137px 137px;
+    background-position: 12px 19px, 50px 72px;
+    opacity: .45;
+  }
+
+  .moon {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    right: 9%;
+    top: 7%;
+    background: #f4f1df;
+    box-shadow: 0 0 55px rgba(221,226,255,.22);
+    opacity: .92;
+  }
+
+  .moon::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    left: 34px;
+    top: -12px;
+    background: #06122c;
+  }
+
+  .wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .card {
+    width: min(850px, 92vw);
+    padding: 58px 45px 40px;
+    text-align: center;
+    border: 1px solid rgba(207, 211, 255, .18);
+    border-radius: 30px;
+    background: rgba(4, 12, 34, .62);
+    backdrop-filter: blur(14px);
+    box-shadow:
+      0 30px 100px rgba(0,0,0,.42),
+      inset 0 1px 0 rgba(255,255,255,.08);
+  }
+
+  .eyebrow {
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #aebcf0;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(58px, 10vw, 105px);
+    line-height: .82;
+    margin: 0;
+    font-weight: 600;
+    color: #f7f4ff;
+    text-shadow: 0 0 30px rgba(145,164,255,.18);
+  }
+
+  h1 span {
+    display: block;
+    color: #b9c7ff;
+    font-size: .72em;
+    margin-top: 16px;
+  }
+
+  .message {
+    margin: 28px auto 16px;
+    max-width: 650px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(24px, 4vw, 34px);
+    line-height: 1.25;
+  }
+
+  .message em {
+    color: #cbd5ff;
+  }
+
+  .sub {
+    color: #aeb7d4;
+    font-size: 13px;
+    letter-spacing: .08em;
+    margin-top: 25px;
+  }
+
+  .sub strong {
+    color: #d9ddff;
+    font-weight: 500;
+  }
+
+  .orchids {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 205px;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  .stem {
+    position: absolute;
+    bottom: 0;
+    width: 3px;
+    height: 0;
+    background: linear-gradient(#7e9a79, #314f42);
+    transform-origin: bottom;
+    transition: height 1.3s cubic-bezier(.2,.8,.2,1);
+    border-radius: 3px;
+  }
+
+  .stem.grown { height: var(--height); }
+
+  .flower {
+    position: absolute;
+    bottom: calc(var(--height) - 8px);
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    transition: transform .65s .45s cubic-bezier(.2,1.5,.4,1);
+    width: 58px;
+    height: 48px;
+  }
+
+  .grown .flower { transform: translateX(-50%) scale(1); }
+
+  .petal {
+    position: absolute;
+    width: 25px;
+    height: 34px;
+    background: linear-gradient(145deg, #eadcff, #9f83d4);
+    border-radius: 70% 70% 55% 55%;
+    box-shadow: 0 0 13px rgba(188,157,255,.22);
+  }
+
+  .p1 { left: 17px; top: 0; transform: rotate(0deg); }
+  .p2 { left: 0; top: 12px; transform: rotate(-65deg); }
+  .p3 { left: 34px; top: 12px; transform: rotate(65deg); }
+  .p4 { left: 10px; top: 17px; transform: rotate(-25deg); }
+  .p5 { left: 27px; top: 17px; transform: rotate(25deg); }
+
+  .center {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background: #f6d98c;
+    border-radius: 50%;
+    left: 23px;
+    top: 24px;
+    box-shadow: 0 0 12px #f6d98c;
+  }
+
+  .hint {
+    position: fixed;
+    left: 50%;
+    bottom: 42px;
+    transform: translateX(-50%);
+    z-index: 8;
+    font-size: 12px;
+    letter-spacing: .08em;
+    color: #c4cceb;
+    background: rgba(4, 10, 27, .7);
+    border: 1px solid rgba(190,200,255,.16);
+    border-radius: 999px;
+    padding: 10px 17px;
+    backdrop-filter: blur(8px);
+    transition: opacity .5s;
+    white-space: nowrap;
+  }
+
+  .spark {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e4e9ff;
+    pointer-events: none;
+    z-index: 20;
+    animation: sparkle .9s ease-out forwards;
+  }
+
+  @keyframes sparkle {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .card { padding: 45px 24px 34px; }
+    .moon { width: 95px; height: 95px; right: 4%; top: 4%; }
+    .moon::after { width: 95px; height: 95px; left: 22px; top: -8px; }
+    .orchids { height: 160px; }
+    .hint { bottom: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="moon"></div>
+
+<main class="wrap">
+  <section class="card">
+    <div class="eyebrow">for the boy who is definitely not batman</div>
+
+    <h1>
+      happy boyfriend's day,
+      <span>kriday ♡</span>
+    </h1>
+
+    <p class="message">
+      i love you to infinity, <em>superman</em>,
+      because i refuse to believe you're batman.
+    </p>
+
+    <p class="sub">
+      <strong>click anywhere to make them grow</strong><br>
+      because i stole being a stealer from you.
+    </p>
+  </section>
+</main>
+
+<div class="orchids" id="orchids"></div>
+<div class="hint" id="hint">click anywhere ♡</div>
+
+<script>
+  const orchids = document.getElementById("orchids");
+  const hint = document.getElementById("hint");
+  let grown = false;
+
+  const positions = [7, 16, 25, 36, 47, 58, 69, 80, 91];
+  const heights = [95, 135, 82, 155, 112, 145, 88, 130, 105];
+
+  positions.forEach((pos, i) => {
+    const stem = document.createElement("div");
+    stem.className = "stem";
+    stem.style.left = pos + "%";
+    stem.style.setProperty("--height", heights[i] + "px");
+
+    const flower = document.createElement("div");
+    flower.className = "flower";
+    flower.innerHTML = `
+      <span class="petal p1"></span>
+      <span class="petal p2"></span>
+      <span class="petal p3"></span>
+      <span class="petal p4"></span>
+      <span class="petal p5"></span>
+      <span class="center"></span>
+    `;
+
+    stem.appendChild(flower);
+    orchids.appendChild(stem);
+  });
+
+  function grow(e) {
+    if (e.target.closest(".card")) {
+      // Still allow clicks on the card to grow the orchids.
+    }
+
+    document.querySelectorAll(".stem").forEach((stem, i) => {
+      setTimeout(() => stem.classList.add("grown"), i * 90);
+    });
+
+    hint.style.opacity = "0";
+    grown = true;
+
+    // little constellation of sparkles around the click
+    for (let i = 0; i < 12; i++) {
+      const s = document.createElement("div");
+      s.className = "spark";
+      s.style.left = e.clientX + "px";
+      s.style.top = e.clientY + "px";
+      s.style.setProperty("--x", (Math.random() * 100 - 50) + "px");
+      s.style.setProperty("--y", (Math.random() * 100 - 50) + "px");
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 950);
+    }
+  }
+
+  document.addEventListener("click", grow);
+</script>
+
+</body>
+</html>
